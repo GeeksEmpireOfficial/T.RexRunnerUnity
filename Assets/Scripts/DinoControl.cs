@@ -6,14 +6,16 @@ using UnityStandardAssets.CrossPlatformInput;
 public class DinoControl : MonoBehaviour {
 
 	Animator anim;
-	Rigidbody2D rb;
-	[SerializeField]
-	float jumpForce = 500f;
+	Rigidbody2D rigidbody;
+
 	float upOrDown;
 
-	// Use this for initialization
-	void Start () {
-		rb = GetComponent<Rigidbody2D> ();
+    [SerializeField]
+    float jumpForce = 500f;
+
+    // Use this for initialization
+    void Start () {
+        rigidbody = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 	}
 	
@@ -21,13 +23,18 @@ public class DinoControl : MonoBehaviour {
 	void Update () {
 		if (GameControl.gameStopped != true) {
 			upOrDown = CrossPlatformInputManager.GetAxisRaw ("Vertical");
-			if (upOrDown > 0 && rb.velocity.y == 0)
-				rb.AddForce (Vector2.up * jumpForce);
+			if (upOrDown > 0 && rigidbody.velocity.y == 0) {
+                rigidbody.AddForce(Vector2.up * jumpForce); 
+            }
 
-			if (upOrDown < 0 && rb.velocity.y == 0)
-				anim.SetBool ("isDown", true);
-			else
-				anim.SetBool ("isDown", false);
-		}
-	}
+            /*if (upOrDown < 0 && rigidbody.velocity.y == 0)
+            {
+                anim.SetBool("isDown", true);
+            }
+            else
+            {
+                anim.SetBool("isDown", false);
+            }*/
+        }
+    }
 }

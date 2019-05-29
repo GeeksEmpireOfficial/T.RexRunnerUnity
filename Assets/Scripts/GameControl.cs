@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -21,9 +19,9 @@ public class GameControl : MonoBehaviour {
 	GameObject[] obstacles;
 
 	[SerializeField]
-	Transform spawnPoint;
-
-	[SerializeField]
+	Transform spawnPointTree, spawnPointBird;
+    
+    [SerializeField]
 	float spawnRate = 2f;
 	float nextSpawn;
 
@@ -36,6 +34,12 @@ public class GameControl : MonoBehaviour {
 	public static bool gameStopped;
 
 	float nextScoreIncrease = 0f;
+
+    [SerializeField]
+    GameObject Trex, Birds;
+
+    [SerializeField]
+    Sprite TrexDead;
 
 	// Use this for initialization
 	void Start () {
@@ -67,23 +71,37 @@ public class GameControl : MonoBehaviour {
 
 		if (Time.unscaledTime > nextBoost && !gameStopped)
 			BoostTime ();
-	}
+    }
 
 	public void DinoHit()
 	{
 		if (yourScore > highScore)
-			PlayerPrefs.SetInt("highScore", yourScore);
+        {
+            PlayerPrefs.SetInt("highScore", yourScore);
+            highScore = yourScore;
+        }
 		Time.timeScale = 0;
 		gameStopped = true;
 		restartButton.SetActive (true);
-	}
+
+        //this.GetComponent<SpriteRenderer>().sprite = Resources.Load("TrexDeadBW", typeof(Sprite)) as Sprite;
+        this.Trex.GetComponent<SpriteRenderer>().sprite = TrexDead;
+
+    }
 
 	void SpawnObstacle()
 	{
 		nextSpawn = Time.time + spawnRate;
 		int randomObstacle = Random.Range (0, obstacles.Length);
-		Instantiate (obstacles [randomObstacle], spawnPoint.position, Quaternion.identity);
-	}
+        
+        if (randomObstacle == 0)//cactus
+        {
+            Instantiate(obstacles[randomObstacle], spawnPointTree.position, Quaternion.identity);
+        } else if (randomObstacle == 1)//bird
+        {
+            Instantiate(obstacles[randomObstacle], spawnPointBird.position, Quaternion.identity);
+        }
+    }
 
 	void BoostTime()
 	{
