@@ -5,7 +5,6 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class DinoControl : MonoBehaviour {
 
-	Animator anim;
 	Rigidbody2D rigidbody;
 
 	float upOrDown;
@@ -16,7 +15,6 @@ public class DinoControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rigidbody = GetComponent<Rigidbody2D> ();
-		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -26,15 +24,6 @@ public class DinoControl : MonoBehaviour {
 			if (upOrDown > 0 && rigidbody.velocity.y == 0) {
                 rigidbody.AddForce(Vector2.up * jumpForce); 
             }
-
-            /*if (upOrDown < 0 && rigidbody.velocity.y == 0)
-            {
-                anim.SetBool("isDown", true);
-            }
-            else
-            {
-                anim.SetBool("isDown", false);
-            }*/
         }
     }
 }

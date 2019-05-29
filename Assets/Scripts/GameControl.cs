@@ -63,8 +63,8 @@ public class GameControl : MonoBehaviour {
 		if (!gameStopped)
 			IncreaseYourScore ();
 
-		highScoreText.text = "High Score: " + highScore;
-		yourScoreText.text = "Your Score: " + yourScore;
+		highScoreText.text = "" + highScore;
+		yourScoreText.text = "" + yourScore;
 
 		if (Time.time > nextSpawn)
 			SpawnObstacle ();
@@ -106,7 +106,7 @@ public class GameControl : MonoBehaviour {
 	void BoostTime()
 	{
 		nextBoost = Time.unscaledTime + timeToBoost;
-		Time.timeScale += 0.25f;
+		Time.timeScale += 0.13f;
 	}
 
 	void IncreaseYourScore()
