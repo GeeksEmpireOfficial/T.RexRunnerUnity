@@ -16,8 +16,11 @@ public class ObstacleControl : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider2D)
 	{
-		if (collider2D.gameObject.name.Equals ("TRex"))
-			GameControl.instance.DinoHit ();
+		if (collider2D.gameObject.name.Equals("TRex"))
+        {
+            GameControl.instance.DinoHit();
+        }
+			
 	}
 
 }

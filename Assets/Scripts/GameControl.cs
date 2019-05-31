@@ -88,6 +88,8 @@ public class GameControl : MonoBehaviour {
         //this.GetComponent<SpriteRenderer>().sprite = Resources.Load("TrexDeadBW", typeof(Sprite)) as Sprite;
         this.Trex.GetComponent<SpriteRenderer>().sprite = TrexDead;
 
+        AudioSource audioSource = this.Trex.GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
 	void SpawnObstacle()
