@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+﻿using UnityEngine;
 
 public class DinoControl : MonoBehaviour {
 
@@ -18,7 +15,7 @@ public class DinoControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (GameControl.gameStopped != true) {		
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.J))
             {
                 rigidbody.AddForce(Vector2.up * jumpForce);
             }
