@@ -7,8 +7,6 @@ public class DinoControl : MonoBehaviour {
 
 	Rigidbody2D rigidbody;
 
-	float upOrDown;
-
     [SerializeField]
     float jumpForce = 500f;
 
@@ -19,10 +17,10 @@ public class DinoControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GameControl.gameStopped != true) {
-			upOrDown = CrossPlatformInputManager.GetAxisRaw ("Vertical");
-			if (upOrDown > 0 && rigidbody.velocity.y == 0) {
-                rigidbody.AddForce(Vector2.up * jumpForce); 
+		if (GameControl.gameStopped != true) {		
+            if (Input.GetMouseButtonDown(0))
+            {
+                rigidbody.AddForce(Vector2.up * jumpForce);
             }
         }
     }
