@@ -79,6 +79,7 @@ public class GameControl : MonoBehaviour {
         {
             PlayerPrefs.SetInt("highScore", yourScore);
             highScore = yourScore;
+            highScoreText.text = "" + highScore;
         }
 		Time.timeScale = 0;
 		gameStopped = true;
