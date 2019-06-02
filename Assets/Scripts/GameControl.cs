@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameControl : MonoBehaviour {
 
@@ -81,15 +82,13 @@ public class GameControl : MonoBehaviour {
             highScore = yourScore;
             highScoreText.text = "" + highScore;
         }
-		Time.timeScale = 0;
+
+        Time.timeScale = 0;
 		gameStopped = true;
 		restartButton.SetActive (true);
 
-        //this.GetComponent<SpriteRenderer>().sprite = Resources.Load("TrexDeadBW", typeof(Sprite)) as Sprite;
+        this.Trex.GetComponent<Animator>().enabled = false;
         this.Trex.GetComponent<SpriteRenderer>().sprite = TrexDead;
-
-        AudioSource audioSource = this.Trex.GetComponent<AudioSource>();
-        audioSource.Play();
     }
 
 	void SpawnObstacle()
@@ -124,5 +123,4 @@ public class GameControl : MonoBehaviour {
 	{
 		SceneManager.LoadScene ("GameScene");
 	}
-
 }

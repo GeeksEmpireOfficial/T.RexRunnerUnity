@@ -336,7 +336,6 @@ GameObject:
   - component: {fileID: 384449971}
   - component: {fileID: 384449970}
   - component: {fileID: 384449976}
-  - component: {fileID: 384449977}
   m_Layer: 0
   m_Name: TRex
   m_TagString: Untagged
@@ -540,102 +539,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &384449977
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384449969}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9a92999a93204814f95ead052b21a535, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &455263029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,9 +1911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fdf79648af35d94ab387e3d7d3378e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -0.7
-  leftWayPointX: -8
-  rightWayPointX: 8
+  moveSpeed: -0.4
+  leftWayPointX: -11
+  rightWayPointX: 11
 --- !u!1 &1838150375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2768,6 +2671,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Offset.y
+      value: -0.07362521
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 1.0327494
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.x
+      value: -0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 0.50489175
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367618214640777282, guid: 14fb31b229c633441bc5faba987d86eb,
+        type: 3}
+      propertyPath: m_Name
+      value: Cactus
+      objectReference: {fileID: 0}
     - target: {fileID: 1668365650964424758, guid: 14fb31b229c633441bc5faba987d86eb,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -2993,27 +2917,6 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
       value: 0.3735193
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Offset.y
-      value: -0.07362521
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.y
-      value: 1.0327494
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Offset.x
-      value: -0.000000059604645
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.x
-      value: 0.50489175
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367618214640777282, guid: 14fb31b229c633441bc5faba987d86eb,
-        type: 3}
-      propertyPath: m_Name
-      value: Cactus
-      objectReference: {fileID: 0}
     - target: {fileID: 5367618214640777286, guid: 14fb31b229c633441bc5faba987d86eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3094,6 +2997,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685800155986886835, guid: 4bcdfb59bdcd62b4aaba9ee450724dc6,
+        type: 3}
+      propertyPath: m_Name
+      value: Bird
+      objectReference: {fileID: 0}
     - target: {fileID: -1332266675883257533, guid: 4bcdfb59bdcd62b4aaba9ee450724dc6,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -3203,19 +3119,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[24].y
       value: -0.19810498
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 7685800155986886835, guid: 4bcdfb59bdcd62b4aaba9ee450724dc6,
-        type: 3}
-      propertyPath: m_Name
-      value: Bird
       objectReference: {fileID: 0}
     - target: {fileID: 7685800155986886837, guid: 4bcdfb59bdcd62b4aaba9ee450724dc6,
         type: 3}

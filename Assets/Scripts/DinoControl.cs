@@ -27,8 +27,15 @@ public class DinoControl : MonoBehaviour {
                 {
                     if (!isJumping)
                     {
-                        isJumping = true;
-                        rigidbody.AddForce(Vector2.up * jumpForce);
+                        if (Input.mousePosition.y >= (Screen.height / 2))
+                        {
+                            isJumping = true;
+                            rigidbody.AddForce(Vector2.up * jumpForce);
+                        } else
+                        {
+                            print("Mouse Touch Bottom Half");
+                            this.GetComponent<SpriteRenderer>().sprite = null;
+                        }
                     }
                 }
             } else
@@ -36,7 +43,7 @@ public class DinoControl : MonoBehaviour {
                 if ((Input.GetTouch(0).position.y >= (Screen.height / 2))
                         || Input.GetKeyDown(KeyCode.Space)
                         || Input.GetKeyDown(KeyCode.J))
-                {
+                {//JumpUp
                     if (!isJumping)
                     {
                         isJumping = true;
@@ -45,8 +52,9 @@ public class DinoControl : MonoBehaviour {
                 }
 
                 if ((Input.GetTouch(0).position.y < (Screen.height / 2)))
-                {
+                {//BendOver
                     //rigidbody.AddForce(Vector2.up * jumpForce);
+                    //this.GetComponent<SpriteRenderer>().sprite = Resources.Load("TrexDeadBW", typeof(Sprite)) as Sprite;
                 }
             }
         }
