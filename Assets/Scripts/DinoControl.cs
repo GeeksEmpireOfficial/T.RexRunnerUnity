@@ -7,12 +7,14 @@ public class DinoControl : MonoBehaviour {
     [SerializeField]
     float jumpForce = 500f;
 
+    [SerializeField]
+    Sprite TrexBend;
 
     bool isJumping = false;
-    // Use this for initialization
+
     void Start () {
         rigidbody = GetComponent<Rigidbody2D> ();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,24 +26,27 @@ public class DinoControl : MonoBehaviour {
                 || Input.GetKeyDown(KeyCode.UpArrow)
                 || Input.GetKeyDown(KeyCode.Space)
                 || Input.GetKeyDown(KeyCode.J))
-                {
+                {//JumpUp
                     if (!isJumping)
                     {
-                        if (Input.mousePosition.y >= (Screen.height / 2))
+                        /*if (Input.mousePosition.y >= (Screen.height / 3))
                         {
-                            isJumping = true;
-                            rigidbody.AddForce(Vector2.up * jumpForce);
+                            
                         } else
                         {
-                            print("Mouse Touch Bottom Half");
-                            this.GetComponent<SpriteRenderer>().sprite = null;
-                        }
+
+                        }*/
+                        isJumping = true;
+                        rigidbody.AddForce(Vector2.up * jumpForce);
                     }
+                } else if(Input.GetKeyDown(KeyCode.DownArrow))//BendOver
+                {
+                    
                 }
             } else
             {
-                if ((Input.GetTouch(0).position.y >= (Screen.height / 2))
-                        || Input.GetKeyDown(KeyCode.Space)
+                if (/*(Input.GetTouch(0).position.y >= (Screen.height / 3))*/
+                        Input.GetKeyDown(KeyCode.Space)
                         || Input.GetKeyDown(KeyCode.J))
                 {//JumpUp
                     if (!isJumping)
@@ -49,12 +54,9 @@ public class DinoControl : MonoBehaviour {
                         isJumping = true;
                         rigidbody.AddForce(Vector2.up * jumpForce);
                     }
-                }
-
-                if ((Input.GetTouch(0).position.y < (Screen.height / 2)))
+                } else
                 {//BendOver
-                    //rigidbody.AddForce(Vector2.up * jumpForce);
-                    //this.GetComponent<SpriteRenderer>().sprite = Resources.Load("TrexDeadBW", typeof(Sprite)) as Sprite;
+
                 }
             }
         }
