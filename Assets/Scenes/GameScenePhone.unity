@@ -283,8 +283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: -0.5
-  leftWayPointX: -8
-  rightWayPointX: 8
+  leftWayPointX: -13
+  rightWayPointX: 13
 --- !u!212 &20174715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: -0.5
   leftWayPointX: -13
-  rightWayPointX: 4
+  rightWayPointX: 13
 --- !u!212 &964036055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2092,7 +2092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89d2051bd354c94ba9aa3b462588865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPhone: 1
   restartButton: {fileID: 12880481}
   highScoreText: {fileID: 1409405295}
   yourScoreText: {fileID: 415696126}

@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
+using GoogleMobileAds.Api;
 
 public class GameControl : MonoBehaviour {
 
@@ -42,8 +44,11 @@ public class GameControl : MonoBehaviour {
     [SerializeField]
     Sprite TrexDead;
 
-	// Use this for initialization
-	void Start () {
+    AdRequest adRequest;
+    InterstitialAd interstitial;
+
+    // Use this for initialization
+    void Start () {
 		
 		if (instance == null) 
 			instance = this;
@@ -57,9 +62,33 @@ public class GameControl : MonoBehaviour {
 		highScore = PlayerPrefs.GetInt ("highScore");
 		nextSpawn = Time.time + spawnRate;
 		nextBoost = Time.unscaledTime + timeToBoost;
-	}
+
+        //AdUnitInterstitial ca-app-pub-2920235108594210/4068039384
+        //AdUnitRewarded ca-app-pub-2920235108594210/1288946736
+        #if UNITY_ANDROID
+            string appId = "ca-app-pub-2920235108594210~9709242675";
+        #endif
+
+        MobileAds.Initialize(appId);
+
+        this.interstitial = new InterstitialAd("ca-app-pub-2920235108594210/4068039384");
+        adRequest = new AdRequest.Builder()
+            .AddTestDevice("CDCAA1F20B5C9C948119E886B31681DE")
+            .AddTestDevice("D101234A6C1CF51023EE5815ABC285BD")
+            .AddTestDevice("65B5827710CBE90F4A99CE63099E524C")
+            .AddTestDevice("DD428143B4772EC7AA87D1E2F9DA787C")
+            .AddTestDevice("5901E5EE74F9B6652E05621140664A54")
+            .Build();
+        this.interstitial.LoadAd(adRequest);
+
+
+        this.interstitial.OnAdLoaded += HandleOnAdLoaded;
+        this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        this.interstitial.OnAdOpening += HandleOnAdOpened;
+        this.interstitial.OnAdClosed += HandleOnAdClosed;
+        this.interstitial.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+    }
 	
-	// Update is called once per frame
 	void Update () {
 		if (!gameStopped)
 			IncreaseYourScore ();
@@ -89,12 +118,18 @@ public class GameControl : MonoBehaviour {
 
         this.Trex.GetComponent<Animator>().enabled = false;
         this.Trex.GetComponent<SpriteRenderer>().sprite = TrexDead;
+
+        if (this.interstitial.IsLoaded())
+        {
+            this.interstitial.Show();
+        }
+        this.interstitial.LoadAd(adRequest);
     }
 
 	void SpawnObstacle()
 	{
 		nextSpawn = Time.time + spawnRate;
-		int randomObstacle = Random.Range (0, obstacles.Length);
+		int randomObstacle = UnityEngine.Random.Range (0, obstacles.Length);
         
         if (randomObstacle == 0)//cactus
         {
@@ -129,4 +164,31 @@ public class GameControl : MonoBehaviour {
             SceneManager.LoadScene("GameScene");
         }
 	}
+
+    public void HandleOnAdLoaded(object sender, EventArgs args)
+    {
+        print("HandleAdLoaded event received");
+    }
+
+    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        print("HandleFailedToReceiveAd event received with message: "
+                            + args.Message);
+        this.interstitial.LoadAd(adRequest);
+    }
+
+    public void HandleOnAdOpened(object sender, EventArgs args)
+    {
+        print("HandleAdOpened event received");
+    }
+
+    public void HandleOnAdClosed(object sender, EventArgs args)
+    {
+        print("HandleAdClosed event received");
+    }
+
+    public void HandleOnAdLeavingApplication(object sender, EventArgs args)
+    {
+        print("HandleAdLeavingApplication event received");
+    }
 }
