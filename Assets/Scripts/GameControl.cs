@@ -6,7 +6,7 @@ using System.Collections;
 public class GameControl : MonoBehaviour {
 
 	public static GameControl instance = null;
-
+    
 	[SerializeField]
 	GameObject restartButton;
 
@@ -121,6 +121,12 @@ public class GameControl : MonoBehaviour {
 
 	public void RestartGame()
 	{
-		SceneManager.LoadScene ("GameScene");
+        if (SceneManager.GetActiveScene().name.Equals("GameScenePhone"))
+        {
+            SceneManager.LoadScene("GameScenePhone");
+        } else if (SceneManager.GetActiveScene().name.Equals("GameScene"))
+        {
+            SceneManager.LoadScene("GameScene");
+        }
 	}
 }

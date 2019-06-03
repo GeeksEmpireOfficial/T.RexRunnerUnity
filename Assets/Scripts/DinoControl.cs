@@ -29,6 +29,9 @@ public class DinoControl : MonoBehaviour {
                 {//JumpUp
                     if (!isJumping)
                     {
+                        isJumping = true;
+                        rigidbody.AddForce(Vector2.up * jumpForce);
+
                         /*if (Input.mousePosition.y >= (Screen.height / 3))
                         {
                             
@@ -36,8 +39,6 @@ public class DinoControl : MonoBehaviour {
                         {
 
                         }*/
-                        isJumping = true;
-                        rigidbody.AddForce(Vector2.up * jumpForce);
                     }
                 } else if(Input.GetKeyDown(KeyCode.DownArrow))//BendOver
                 {
@@ -45,19 +46,28 @@ public class DinoControl : MonoBehaviour {
                 }
             } else
             {
-                if (/*(Input.GetTouch(0).position.y >= (Screen.height / 3))*/
-                        Input.GetKeyDown(KeyCode.Space)
-                        || Input.GetKeyDown(KeyCode.J))
+
+                if ((Input.GetTouch(0).phase == TouchPhase.Ended) ||
+                    Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.J))
                 {//JumpUp
                     if (!isJumping)
                     {
                         isJumping = true;
                         rigidbody.AddForce(Vector2.up * jumpForce);
                     }
-                } else
+                }
+                else
                 {//BendOver
 
                 }
+
+                /*if ((Input.GetTouch(0).position.y >= (Screen.height / 3)))
+                {//JumpUp
+                    
+                } else
+                {//BendOver
+
+                }*/
             }
         }
     }
