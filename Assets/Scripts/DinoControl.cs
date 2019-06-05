@@ -31,14 +31,6 @@ public class DinoControl : MonoBehaviour {
                     {
                         isJumping = true;
                         rigidbody.AddForce(Vector2.up * jumpForce);
-
-                        /*if (Input.mousePosition.y >= (Screen.height / 3))
-                        {
-                            
-                        } else
-                        {
-
-                        }*/
                     }
                 } else if(Input.GetKeyDown(KeyCode.DownArrow))//BendOver
                 {
@@ -60,14 +52,6 @@ public class DinoControl : MonoBehaviour {
                 {//BendOver
 
                 }
-
-                /*if ((Input.GetTouch(0).position.y >= (Screen.height / 3)))
-                {//JumpUp
-                    
-                } else
-                {//BendOver
-
-                }*/
             }
         }
     }

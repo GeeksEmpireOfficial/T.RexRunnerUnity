@@ -156,14 +156,9 @@ public class GameControl : MonoBehaviour {
 
 	public void RestartGame()
 	{
-        if (SceneManager.GetActiveScene().name.Equals("GameScenePhone"))
-        {
-            SceneManager.LoadScene("GameScenePhone");
-        } else if (SceneManager.GetActiveScene().name.Equals("GameScene"))
-        {
-            SceneManager.LoadScene("GameScene");
-        }
-	}
+        SceneManager.LoadScene("GameScenePhone");
+        gameStopped = false;
+    }
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/GameScenePhone.unity
+    guid: 9d58b6e91833af04191e875ec1cf4c75
   m_configObjects: {}
