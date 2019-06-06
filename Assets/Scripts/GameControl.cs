@@ -39,7 +39,7 @@ public class GameControl : MonoBehaviour {
 	float nextScoreIncrease = 0f;
 
     [SerializeField]
-    GameObject Trex, Birds;
+    GameObject Trex;
 
     [SerializeField]
     Sprite TrexDead;
