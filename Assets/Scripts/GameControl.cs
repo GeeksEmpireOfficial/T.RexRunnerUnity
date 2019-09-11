@@ -47,6 +47,8 @@ public class GameControl : MonoBehaviour {
     AdRequest adRequest;
     InterstitialAd interstitial;
 
+    bool eligibleToLoadShowAds = false;
+
     // Use this for initialization
     void Start () {
 		
@@ -103,7 +105,17 @@ public class GameControl : MonoBehaviour {
 			BoostTime ();
     }
 
-	public void DinoHit()
+    void OnApplicationFocus(bool hasFocus)
+    {
+        eligibleToLoadShowAds = hasFocus;
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        eligibleToLoadShowAds = pauseStatus;
+    }
+
+    public void DinoHit()
 	{
 		if (yourScore > highScore)
         {
@@ -168,8 +180,12 @@ public class GameControl : MonoBehaviour {
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
         print("HandleFailedToReceiveAd event received with message: "
-                            + args.Message);
-        this.interstitial.LoadAd(adRequest);
+                           + args.Message);
+
+        if (eligibleToLoadShowAds)
+        {
+            this.interstitial.LoadAd(adRequest);
+        }
     }
 
     public void HandleOnAdOpened(object sender, EventArgs args)
